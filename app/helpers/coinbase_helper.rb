@@ -20,4 +20,34 @@ module CoinbaseHelper
         params['client_secret'] = ApplicationController::CLIENT_SECRET
         params['redirect_uri'] = ApplicationController::BASEURL + 'oauth2callback'
         params['grant_type'] = 'authorization_code'
+
+        # Initialize HTTP library
+        url = URI.parse('https://accounts.google.com')
+        http = Net::HTTP.new(url.host, url.port)
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE # You should use VERIFY_PEER in production
+
+        # Make request for tokens
+        request = Net::HTTP::Post.new('/o/oauth2/token')
+        request.set_form_data(params)
+        response = http.request(request)
+
+        JSON.parse(response.body)
     end
+
+    
+def call_api(path, access_token) 
+# Initialize HTTP library
+     url = URI.parse('https://www.googleapis.com') 
+     http = Net::HTTP.new(url.host, url.port)
+     http.use_ssl = true 
+     http.verify_mode = OpenSSL::SSL::VERIFY_NONE 
+# You should use VERIFY_PEER in production
+
+     # Make request to API 
+     request = Net::HTTP::Get.new(path) 
+     request['Authorization'] = 'Bearer ' + access_token 
+     response = http.request(request)
+
+     JSON.parse(response.body) 
+end
