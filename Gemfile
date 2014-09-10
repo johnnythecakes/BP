@@ -21,6 +21,7 @@ gem 'coffee-rails', '~> 4.0.0'
 group :development, :test do
   gem 'rspec-rails'
 end
+
 gem 'json'
 
 # Use jquery as the JavaScript library
