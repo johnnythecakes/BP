@@ -1,5 +1,7 @@
 BP::Application.routes.draw do
 
+  resources :users
+
   root "users#index"
 
   get '/login', to: 'sessions#new', as: 'login'

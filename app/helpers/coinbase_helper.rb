@@ -108,3 +108,4 @@ module CoinbaseHelper
       user_tokens['access_token']
 
     end
+end

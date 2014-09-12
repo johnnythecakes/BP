@@ -11,4 +11,5 @@ class ApplicationController < ActionController::Base
   # put scope variable urls you want to pull below
   CLIENT_SCOPE = ''
   BASEURL = 'http://localhost:3000/'
+  
 end
