@@ -56,5 +56,5 @@ production:
   encoding: unicode
   database: BP_production
   pool: 5
-  username: BP
-  password:
+  username: Zach
+  password: 
